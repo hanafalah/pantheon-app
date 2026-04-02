@@ -1,0 +1,29 @@
+[package]
+name = "rust-stub"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pantheon Team <hamzahnafalah@gmail.com>"]
+license = "MIT"
+description = "Template engine and stub files for code generation - Laravel Stub equivalent"
+
+[lib]
+name = "rust_stub"
+path = "src/lib.rs"
+
+[dependencies]
+# Template engine
+tera = "1.19"
+
+# String manipulation
+rust-core = { path = "../rust-core" }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3.8"

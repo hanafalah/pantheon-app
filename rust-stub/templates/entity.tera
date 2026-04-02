@@ -1,0 +1,44 @@
+//! {{ struct_name }} Entity
+
+use rust_support::base::BaseEntity;
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
+use chrono::{DateTime, Utc};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct {{ struct_name }} {
+    pub id: Uuid,
+    // Add your fields here
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+}
+
+impl BaseEntity for {{ struct_name }} {
+    fn get_view_resource(&self) -> Box<dyn std::any::Any> {
+        Box::new(crate::resources::{{ struct_name }}ViewResource::from(self))
+    }
+
+    fn get_show_resource(&self) -> Box<dyn std::any::Any> {
+        Box::new(crate::resources::{{ struct_name }}ShowResource::from(self))
+    }
+
+    fn to_view_api(&self) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+        Ok(serde_json::to_value(crate::resources::{{ struct_name }}ViewResource::from(self))?)
+    }
+
+    fn to_show_api(&self) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+        Ok(serde_json::to_value(crate::resources::{{ struct_name }}ShowResource::from(self))?)
+    }
+
+    fn table_name() -> &'static str {
+        "{{ table_name }}"
+    }
+
+    fn primary_key() -> &'static str {
+        "id"
+    }
+
+    fn get_id(&self) -> Uuid {
+        self.id
+    }
+}

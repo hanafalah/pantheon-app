@@ -1,0 +1,29 @@
+//! {{ struct_name }} Show Resource
+
+use rust_support::base::{BaseResource, ShowResource};
+use serde::Serialize;
+use uuid::Uuid;
+use chrono::{DateTime, Utc};
+
+#[derive(Debug, Clone, Serialize)]
+pub struct {{ struct_name }}ShowResource {
+    pub id: Uuid,
+    // Add your show fields here (more detailed than ViewResource)
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+}
+
+impl BaseResource for {{ struct_name }}ShowResource {}
+
+impl ShowResource for {{ struct_name }}ShowResource {}
+
+impl From<&crate::entities::{{ struct_name }}> for {{ struct_name }}ShowResource {
+    fn from(entity: &crate::entities::{{ struct_name }}) -> Self {
+        Self {
+            id: entity.id,
+            // Map your fields here
+            created_at: entity.created_at,
+            updated_at: entity.updated_at,
+        }
+    }
+}

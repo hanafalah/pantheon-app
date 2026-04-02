@@ -1,0 +1,24 @@
+//! {{ struct_name }} View Resource
+
+use rust_support::base::{BaseResource, ViewResource};
+use serde::Serialize;
+use uuid::Uuid;
+
+#[derive(Debug, Clone, Serialize)]
+pub struct {{ struct_name }}ViewResource {
+    pub id: Uuid,
+    // Add your view fields here
+}
+
+impl BaseResource for {{ struct_name }}ViewResource {}
+
+impl ViewResource for {{ struct_name }}ViewResource {}
+
+impl From<&crate::entities::{{ struct_name }}> for {{ struct_name }}ViewResource {
+    fn from(entity: &crate::entities::{{ struct_name }}) -> Self {
+        Self {
+            id: entity.id,
+            // Map your fields here
+        }
+    }
+}

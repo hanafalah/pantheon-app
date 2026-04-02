@@ -1,0 +1,50 @@
+//! {{ struct_name }} Service
+
+use rust_support::base::{BaseService, PaginationParams, SortParams, FilterParams};
+use rust_support::utils::AppResult;
+use uuid::Uuid;
+
+pub struct {{ struct_name }}Service {
+    // Add your dependencies here
+}
+
+impl {{ struct_name }}Service {
+    pub fn new() -> Self {
+        Self {}
+    }
+}
+
+#[async_trait::async_trait]
+impl BaseService for {{ struct_name }}Service {
+    type Entity = crate::entities::{{ struct_name }};
+
+    async fn find_all(
+        &self,
+        _pagination: Option<PaginationParams>,
+        _sort: Option<SortParams>,
+        _filter: Option<FilterParams>,
+    ) -> AppResult<Vec<Self::Entity>> {
+        // Implement your find all logic
+        unimplemented!("{{ struct_name }}Service::find_all")
+    }
+
+    async fn find_by_id(&self, _id: Uuid) -> AppResult<Option<Self::Entity>> {
+        // Implement your find by id logic
+        unimplemented!("{{ struct_name }}Service::find_by_id")
+    }
+
+    async fn create(&self, _entity: Self::Entity) -> AppResult<Self::Entity> {
+        // Implement your create logic
+        unimplemented!("{{ struct_name }}Service::create")
+    }
+
+    async fn update(&self, _id: Uuid, _entity: Self::Entity) -> AppResult<Self::Entity> {
+        // Implement your update logic
+        unimplemented!("{{ struct_name }}Service::update")
+    }
+
+    async fn delete(&self, _id: Uuid) -> AppResult<bool> {
+        // Implement your delete logic
+        unimplemented!("{{ struct_name }}Service::delete")
+    }
+}

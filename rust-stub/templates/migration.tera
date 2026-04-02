@@ -1,0 +1,15 @@
+-- Migration: Create {{ table_name }} table
+
+-- Up Migration
+CREATE TABLE IF NOT EXISTS {{ table_name }} (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    -- Add your columns here
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+-- Create indexes
+CREATE INDEX idx_{{ table_name }}_created_at ON {{ table_name }}(created_at);
+
+-- Down Migration
+-- DROP TABLE IF EXISTS {{ table_name }};

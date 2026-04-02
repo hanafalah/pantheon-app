@@ -1,0 +1,62 @@
+//! {{ struct_name }} Controller
+
+use actix_web::{web, HttpResponse, Result};
+use rust_support::base::{BaseController, IndexQuery};
+use uuid::Uuid;
+
+pub struct {{ struct_name }}Controller {
+    service: web::Data<crate::services::{{ struct_name }}Service>,
+}
+
+impl {{ struct_name }}Controller {
+    pub fn new(service: web::Data<crate::services::{{ struct_name }}Service>) -> Self {
+        Self { service }
+    }
+
+    /// Configure routes
+    pub fn configure(cfg: &mut web::ServiceConfig) {
+        cfg.service(
+            web::scope("/{{ module_name }}")
+                .route("", web::get().to(Self::index))
+                .route("", web::post().to(Self::store))
+                .route("/{id}", web::get().to(Self::show))
+                .route("/{id}", web::put().to(Self::update))
+                .route("/{id}", web::delete().to(Self::destroy)),
+        );
+    }
+}
+
+#[async_trait::async_trait]
+impl BaseController for {{ struct_name }}Controller {
+    async fn index(&self, query: IndexQuery) -> Result<HttpResponse> {
+        // Implement your list logic
+        Ok(HttpResponse::Ok().json(serde_json::json!({
+            "data": [],
+            "meta": {
+                "total": 0,
+                "page": query.page.unwrap_or(1),
+                "page_size": query.page_size.unwrap_or(20)
+            }
+        })))
+    }
+
+    async fn show(&self, id: Uuid) -> Result<HttpResponse> {
+        // Implement your show logic
+        Ok(HttpResponse::NotImplemented().finish())
+    }
+
+    async fn store<T: serde::de::DeserializeOwned + Send>(&self, data: T) -> Result<HttpResponse> {
+        // Implement your create logic
+        Ok(HttpResponse::NotImplemented().finish())
+    }
+
+    async fn update<T: serde::de::DeserializeOwned + Send>(&self, id: Uuid, data: T) -> Result<HttpResponse> {
+        // Implement your update logic
+        Ok(HttpResponse::NotImplemented().finish())
+    }
+
+    async fn destroy(&self, id: Uuid) -> Result<HttpResponse> {
+        // Implement your delete logic
+        Ok(HttpResponse::NotImplemented().finish())
+    }
+}

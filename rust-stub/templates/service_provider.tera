@@ -1,0 +1,17 @@
+//! {{ struct_name }} Service Provider
+
+use rust_support::provider::ServiceProvider;
+
+pub struct {{ struct_name }}ServiceProvider;
+
+impl ServiceProvider for {{ struct_name }}ServiceProvider {
+    fn register(&self) {
+        // Register services in container
+        println!("Registering {{ struct_name }} services...");
+    }
+
+    fn boot(&self) {
+        // Boot services
+        println!("Booting {{ struct_name }} services...");
+    }
+}

@@ -2,6 +2,7 @@
 members = [
     "rust-support",
     "rust-core",
+    "rust-stub",
     # Temporarily commented out until crates are created
     # "repositories/*",
     # "projects/*",
