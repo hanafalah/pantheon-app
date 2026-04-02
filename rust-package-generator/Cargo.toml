@@ -1,0 +1,34 @@
+[package]
+name = "rust-package-generator"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pantheon Team <hamzahnafalah@gmail.com>"]
+license = "MIT"
+description = "CLI tool for generating new Rust modules - Laravel Package Generator equivalent"
+
+[[bin]]
+name = "pkg-gen"
+path = "src/main.rs"
+
+[dependencies]
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Template engine
+rust-stub = { path = "../rust-stub" }
+rust-core = { path = "../rust-core" }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+
+# Date/Time
+chrono = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3.8"
