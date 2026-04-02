@@ -4,6 +4,7 @@ members = [
     "rust-core",
     "rust-stub",
     "rust-package-generator",
+    "microtenant",
     # Temporarily commented out until crates are created
     # "repositories/*",
     # "projects/*",

@@ -1,0 +1,45 @@
+[package]
+name = "microtenant"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pantheon Team <hamzahnafalah@gmail.com>"]
+license = "MIT"
+description = "Multi-tenant management library for Pantheon App"
+
+[lib]
+name = "microtenant"
+path = "src/lib.rs"
+
+[dependencies]
+# Core dependencies
+rust-support = { path = "../rust-support" }
+rust-core = { path = "../rust-core" }
+
+# Web framework
+actix-web = { workspace = true }
+
+# Database
+diesel = { workspace = true }
+r2d2 = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# UUID & Time
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
