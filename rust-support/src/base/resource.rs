@@ -70,10 +70,6 @@ pub trait ViewResource: BaseResource + Serialize {
 /// }
 /// ```
 pub trait ShowResource: BaseResource + Serialize {
-    /// Get the underlying ViewResource
-    /// This ensures ShowResource always includes ViewResource fields
-    fn get_view_resource(&self) -> Box<dyn ViewResource>;
-
     /// Convert to JSON value
     fn to_json(&self) -> Result<Value, serde_json::Error> {
         serde_json::to_value(self)

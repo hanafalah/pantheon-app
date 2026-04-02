@@ -1,10 +1,11 @@
 [workspace]
 members = [
     "rust-support",
-    "repositories/*",
-    "projects/*",
-    "groups/*",
-    "tenants/*",
+    # Temporarily commented out until crates are created
+    # "repositories/*",
+    # "projects/*",
+    # "groups/*",
+    # "tenants/*",
 ]
 resolver = "2"
 

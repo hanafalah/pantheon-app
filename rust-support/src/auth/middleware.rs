@@ -65,7 +65,7 @@ impl<S, B> Transform<S, ServiceRequest> for AuthMiddleware
 where
     S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error> + 'static,
     S::Future: 'static,
-    B: 'static,
+    B: actix_web::body::MessageBody + 'static,
 {
     type Response = ServiceResponse<BoxBody>;
     type Error = Error;
@@ -91,7 +91,7 @@ impl<S, B> Service<ServiceRequest> for AuthMiddlewareService<S>
 where
     S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error> + 'static,
     S::Future: 'static,
-    B: 'static,
+    B: actix_web::body::MessageBody + 'static,
 {
     type Response = ServiceResponse<BoxBody>;
     type Error = Error;
@@ -202,7 +202,7 @@ impl<S, B> Transform<S, ServiceRequest> for OptionalAuthMiddleware
 where
     S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error> + 'static,
     S::Future: 'static,
-    B: 'static,
+    B: actix_web::body::MessageBody + 'static,
 {
     type Response = ServiceResponse<BoxBody>;
     type Error = Error;
@@ -227,7 +227,7 @@ impl<S, B> Service<ServiceRequest> for OptionalAuthMiddlewareService<S>
 where
     S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error> + 'static,
     S::Future: 'static,
-    B: 'static,
+    B: actix_web::body::MessageBody + 'static,
 {
     type Response = ServiceResponse<BoxBody>;
     type Error = Error;

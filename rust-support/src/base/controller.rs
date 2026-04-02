@@ -19,7 +19,7 @@ pub trait BaseController: Send + Sync {
     /// List resources (GET /resource)
     ///
     /// Supports pagination, filtering, and sorting
-    async fn index(&self, query: IndexQuery) -> Result<HttpResponse> {
+    async fn index(&self, _query: IndexQuery) -> Result<HttpResponse> {
         // Default implementation returns not implemented
         Ok(HttpResponse::NotImplemented().json(serde_json::json!({
             "error": "index not implemented"
@@ -36,7 +36,7 @@ pub trait BaseController: Send + Sync {
     }
 
     /// Create new resource (POST /resource)
-    async fn store<T: DeserializeOwned>(&self, data: T) -> Result<HttpResponse> {
+    async fn store<T: DeserializeOwned + Send>(&self, data: T) -> Result<HttpResponse> {
         // Default implementation returns not implemented
         let _ = data;
         Ok(HttpResponse::NotImplemented().json(serde_json::json!({
@@ -45,7 +45,7 @@ pub trait BaseController: Send + Sync {
     }
 
     /// Update resource (PUT/PATCH /resource/{id})
-    async fn update<T: DeserializeOwned>(&self, id: Uuid, data: T) -> Result<HttpResponse> {
+    async fn update<T: DeserializeOwned + Send>(&self, id: Uuid, data: T) -> Result<HttpResponse> {
         // Default implementation returns not implemented
         let _ = (id, data);
         Ok(HttpResponse::NotImplemented().json(serde_json::json!({

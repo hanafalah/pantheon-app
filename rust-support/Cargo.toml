@@ -75,3 +75,4 @@ rand = { workspace = true }
 mockall = { workspace = true }
 fake = { workspace = true }
 tokio-test = "0.4"
+tempfile = "3.8"
