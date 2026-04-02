@@ -1,0 +1,38 @@
+[package]
+name = "rust-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pantheon Team <hamzahnafalah@gmail.com>"]
+license = "MIT"
+description = "Core helper library for Pantheon App - Laravel Support equivalent"
+
+[lib]
+name = "rust_core"
+path = "src/lib.rs"
+
+[dependencies]
+# Dependency to rust-support
+rust-support = { path = "../rust-support" }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# UUID & Time
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# Error Handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Utilities
+rand = { workspace = true }
+paste = "1.0"
+
+[dev-dependencies]
+tokio-test = "0.4"

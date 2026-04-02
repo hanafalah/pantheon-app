@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "rust-support",
+    "rust-core",
     # Temporarily commented out until crates are created
     # "repositories/*",
     # "projects/*",
