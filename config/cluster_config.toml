@@ -1,0 +1,33 @@
+# Cluster Database Configuration
+# Defines cluster schemas and their auto-generation settings
+
+[cashier]
+enabled = true
+partition_strategy = "year"  # Options: "year", "year_month"
+schema_prefix = "cashier"
+auto_generate = false  # Will be enabled in Plan 3
+# Schema format: cashier_2026, cashier_2027, etc.
+
+# Pre-generate settings (for future implementation)
+[cashier.auto_generate_settings]
+days_before_new_period = 5
+notification_enabled = true
+notification_recipients = ["admin@pantheon.local"]
+
+[scm]
+enabled = true
+partition_strategy = "year"  # Options: "year", "year_month"
+schema_prefix = "scm"
+auto_generate = false  # Will be enabled in Plan 3
+# Schema format: scm_2026, scm_2027, etc.
+
+# Pre-generate settings (for future implementation)
+[scm.auto_generate_settings]
+days_before_new_period = 5
+notification_enabled = true
+notification_recipients = ["admin@pantheon.local"]
+
+# Future cluster types can be added here
+# [inventory]
+# [accounting]
+# etc.

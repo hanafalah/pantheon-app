@@ -1,0 +1,17 @@
+# JWT Configuration
+
+[jwt]
+# Secret key for signing JWT tokens
+# IMPORTANT: Change this in production and store in environment variable
+secret = "YXYlGIbJ65VGjQnETWX23iCvssXg7PJu"
+algorithm = "HS256"
+
+# Token expiration times (in seconds)
+access_token_expiry = 900       # 15 minutes
+refresh_token_expiry = 604800   # 7 days
+
+# Token issuer
+issuer = "pantheon-app"
+
+# Audience
+audience = "pantheon-users"

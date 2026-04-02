@@ -1,0 +1,208 @@
+# Entity-to-Connection Mapping Configuration
+# This file defines which database connection each entity should use
+
+# Format:
+# [entity.EntityName]
+# connection = "core" | "hq" | "group" | "tenant" | "cluster:cashier" | "cluster:scm"
+# schema = "schema_name" (optional, for cluster databases)
+
+# ============================================================================
+# CORE DATABASE ENTITIES (pantheon)
+# ============================================================================
+
+[entity.User]
+connection = "core"
+
+[entity.UserReference]
+connection = "core"
+
+[entity.Tenant]
+connection = "core"
+
+[entity.Workspace]
+connection = "core"
+
+[entity.Domain]
+connection = "core"
+
+[entity.License]
+connection = "core"
+
+[entity.ModelHasLicense]
+connection = "core"
+
+[entity.Unicode]
+connection = "core"
+
+[entity.ApiAccess]
+connection = "core"
+
+[entity.Job]
+connection = "core"
+
+[entity.FailedJob]
+connection = "core"
+
+# Regional entities
+[entity.Country]
+connection = "core"
+
+[entity.Province]
+connection = "core"
+
+[entity.District]
+connection = "core"
+
+[entity.Subdistrict]
+connection = "core"
+
+[entity.Village]
+connection = "core"
+
+# ============================================================================
+# TENANT DATABASE ENTITIES (pantheon_tenant_*)
+# Default connection is "tenant" - no need to explicitly define here
+# ============================================================================
+
+# Example explicit tenant entity mapping:
+[entity.People]
+connection = "tenant"
+
+[entity.Employee]
+connection = "tenant"
+
+[entity.Address]
+connection = "tenant"
+
+[entity.CardIdentity]
+connection = "tenant"
+
+[entity.Consument]
+connection = "tenant"
+
+[entity.Item]
+connection = "tenant"
+
+[entity.Variant]
+connection = "tenant"
+
+[entity.ItemHasVariant]
+connection = "tenant"
+
+[entity.Stock]
+connection = "tenant"
+
+[entity.WarehouseItem]
+connection = "tenant"
+
+[entity.Transaction]
+connection = "tenant"
+
+[entity.Permission]
+connection = "tenant"
+
+[entity.Role]
+connection = "tenant"
+
+[entity.RoleHasPermission]
+connection = "tenant"
+
+[entity.ModelHasRole]
+connection = "tenant"
+
+[entity.ModelHasPermission]
+connection = "tenant"
+
+[entity.ModelHasOrganization]
+connection = "tenant"
+
+[entity.ModelHasWarehouse]
+connection = "tenant"
+
+[entity.ModelHasService]
+connection = "tenant"
+
+[entity.ModelHasPhone]
+connection = "tenant"
+
+[entity.ModelHasEncoding]
+connection = "tenant"
+
+[entity.Notification]
+connection = "tenant"
+
+[entity.Room]
+connection = "tenant"
+
+[entity.Summary]
+connection = "tenant"
+
+[entity.UserWallet]
+connection = "tenant"
+
+[entity.MasterReport]
+connection = "tenant"
+
+# ============================================================================
+# CASHIER CLUSTER ENTITIES (tenant_db::cashier_*)
+# ============================================================================
+
+[entity.Billing]
+connection = "cluster:cashier"
+
+[entity.Invoice]
+connection = "cluster:cashier"
+
+[entity.Refund]
+connection = "cluster:cashier"
+
+[entity.PaymentSummary]
+connection = "cluster:cashier"
+
+[entity.PaymentHistory]
+connection = "cluster:cashier"
+
+[entity.PaymentDetail]
+connection = "cluster:cashier"
+
+[entity.SplitPayment]
+connection = "cluster:cashier"
+
+[entity.WalletTransaction]
+connection = "cluster:cashier"
+
+[entity.TransactionItem]
+connection = "cluster:cashier"
+
+# ============================================================================
+# SCM CLUSTER ENTITIES (tenant_db::scm_*)
+# ============================================================================
+
+[entity.CardStock]
+connection = "cluster:scm"
+
+[entity.Distribution]
+connection = "cluster:scm"
+
+[entity.OpnameStock]
+connection = "cluster:scm"
+
+[entity.Procurement]
+connection = "cluster:scm"
+
+[entity.ProcurementList]
+connection = "cluster:scm"
+
+[entity.PurchaseOrder]
+connection = "cluster:scm"
+
+[entity.PurchaseRequest]
+connection = "cluster:scm"
+
+[entity.ReceiveOrder]
+connection = "cluster:scm"
+
+# ============================================================================
+# DEFAULT RULE
+# ============================================================================
+# Any entity not explicitly defined above will use "tenant" connection by default

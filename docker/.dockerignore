@@ -1,0 +1,50 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CI/CD
+.github/
+
+# Environment
+.env
+.env.*
+
+# Rust
+target/
+debug/
+**/*.rs.bk
+*.pdb
+
+# Docker
+docker/
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+*.bak
+*.backup
+
+# Test coverage
+coverage/
+*.profdata
+*.profraw

@@ -1,0 +1,38 @@
+# Database Configuration
+
+[core]
+url = "postgresql://pantheon_app:password@localhost:5432/pantheon"
+pool_size = 10
+connection_timeout = 30
+idle_timeout = 600
+
+[tenant_template]
+url = "postgresql://pantheon_app:password@localhost:5432/pantheon_tenant_template"
+pool_size = 5
+connection_timeout = 30
+idle_timeout = 600
+
+# Multi-tenant database configuration
+[tenants]
+# Tenants akan di-resolve dynamically
+# Format: pantheon_tenant_{tenant_id}
+# Contoh: pantheon_tenant_00000000-0000-0000-0000-000000000001
+url_template = "postgresql://pantheon_app:password@localhost:5432/pantheon_tenant_{tenant_id}"
+pool_size = 10
+connection_timeout = 30
+idle_timeout = 600
+
+# Cluster database configuration
+[clusters]
+# Format: {tenant_database}::{schema_name}
+# Contoh: pantheon_tenant_00000000-0000-0000-0000-000000000001::cashier_2026
+
+[clusters.cashier]
+enabled = true
+partition_by = "year"  # "year" or "year_month"
+pool_size = 10
+
+[clusters.scm]
+enabled = true
+partition_by = "year"  # "year" or "year_month"
+pool_size = 10
