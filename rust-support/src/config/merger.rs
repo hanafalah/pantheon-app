@@ -2,7 +2,7 @@
 //!
 //! Merges multiple configurations with deep merge support
 
-use crate::utils::{AppError, AppResult};
+use crate::utils::AppResult;
 use serde_json::{Map, Value as JsonValue};
 
 /// Configuration Merger

@@ -1,11 +1,16 @@
 //! Database Module
 //!
-//! Database management with multi-tenant support
-//! TODO: Full implementation in Phase 1 - Step 1.2 (Database Infrastructure)
+//! Database management with multi-tenant support and connection pooling
+//!
+//! # Features
+//! - Multi-database support (core, hq, group, tenant)
+//! - R2D2 connection pooling
+//! - Cluster schema management
+//! - Health checks and statistics
 
-pub mod manager;
 pub mod connection;
+pub mod manager;
 
 // Re-exports
+pub use connection::{ConnectionManager, DatabaseConfig, PgPool, PoolStats};
 pub use manager::DatabaseManager;
-pub use connection::ConnectionManager;

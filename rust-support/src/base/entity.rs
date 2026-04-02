@@ -12,16 +12,20 @@ use uuid::Uuid;
 /// Determines which database connection the entity should use
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum EntityConnection {
-    /// Core database (pantheon)
+    /// Core database (pantheon_core)
     Core,
-    /// HQ schema in core database (hq_*)
-    Hq,
-    /// Group schema in core database (pantheon_group_*)
-    Group,
-    /// Tenant database (pantheon_tenant_*)
-    Tenant,
-    /// Cluster schema in tenant database (cashier_*, scm_*)
-    Cluster { cluster_type: String },
+    /// HQ database (pantheon_hq)
+    HQ,
+    /// Group database (pantheon_group_{id})
+    Group(Uuid),
+    /// Tenant database (pantheon_tenant_{id})
+    Tenant(Uuid),
+    /// Cluster schema in core database (cashier_*, scm_*)
+    Cluster {
+        cluster_type: String,
+        year: i32,
+        month: Option<u8>,
+    },
 }
 
 impl EntityConnection {
@@ -29,10 +33,10 @@ impl EntityConnection {
     pub fn as_str(&self) -> &str {
         match self {
             EntityConnection::Core => "core",
-            EntityConnection::Hq => "hq",
-            EntityConnection::Group => "group",
-            EntityConnection::Tenant => "tenant",
-            EntityConnection::Cluster { cluster_type } => cluster_type,
+            EntityConnection::HQ => "hq",
+            EntityConnection::Group(_) => "group",
+            EntityConnection::Tenant(_) => "tenant",
+            EntityConnection::Cluster { cluster_type, .. } => cluster_type,
         }
     }
 }
@@ -65,8 +69,8 @@ pub trait BaseEntity: Send + Sync {
     /// Get the database connection type for this entity
     /// Determines which database/schema the entity belongs to
     fn get_connection(&self) -> EntityConnection {
-        // Default to tenant connection
-        EntityConnection::Tenant
+        // Default to core connection
+        EntityConnection::Core
     }
 
     /// Get the table name for this entity
