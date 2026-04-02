@@ -1,0 +1,77 @@
+[package]
+name = "rust-support"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pantheon Team <hamzahnafalah@gmail.com>"]
+license = "MIT"
+description = "Core support library for Pantheon App - Base traits, database manager, auth, and utilities"
+
+[lib]
+name = "rust_support"
+path = "src/lib.rs"
+
+[dependencies]
+# Web Framework
+actix-web = { workspace = true }
+actix-cors = { workspace = true }
+
+# Database
+diesel = { workspace = true }
+diesel_migrations = { workspace = true }
+r2d2 = { workspace = true }
+
+# Async Runtime
+tokio = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+
+# JWT
+jsonwebtoken = { workspace = true }
+
+# Password
+bcrypt = { workspace = true }
+
+# UUID & Time
+uuid = { workspace = true }
+chrono = { workspace = true }
+
+# Configuration
+config = { workspace = true }
+dotenv = { workspace = true }
+
+# Validation
+validator = { workspace = true }
+
+# Error Handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tracing-actix-web = { workspace = true }
+
+# RabbitMQ
+lapin = { workspace = true }
+
+# OpenAPI
+utoipa = { workspace = true }
+utoipa-swagger-ui = { workspace = true }
+
+# Utilities
+once_cell = { workspace = true }
+parking_lot = { workspace = true }
+regex = { workspace = true }
+base64 = { workspace = true }
+sha2 = { workspace = true }
+rand = { workspace = true }
+
+[dev-dependencies]
+mockall = { workspace = true }
+fake = { workspace = true }
+tokio-test = "0.4"
